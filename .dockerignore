@@ -1,0 +1,8 @@
+.idea
+docker.sh
+Dockerfile
+.gitignore
+virtualization/bin
+virtualization/obj
+virtualization/.gitignore
+.git
