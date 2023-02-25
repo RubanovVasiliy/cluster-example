@@ -1,13 +1,19 @@
 stages:
   - build
 
+variables:
+  TAG: "$CI_COMMIT_SHA"
+
 build:
   stage: build
   image: docker:latest
   services:
     - docker:dind
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - if [ -n "$CI_COMMIT_TAG" ]; then
+      TAG = $CI_COMMIT_TAG
+      fi
+    - docker build -t $CI_REGISTRY_IMAGE:$TAG .
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     - docker rmi $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
