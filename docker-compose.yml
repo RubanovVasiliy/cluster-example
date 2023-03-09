@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  app_a:
+    build: .
+    ports:
+      - "8080:80"
+    networks:
+      - web
+
+  app_b:
+    image: traefik/whoami
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.example.com`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+    networks:
+      - web
+
+  proxy:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
