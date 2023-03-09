@@ -14,4 +14,9 @@ RUN dotnet publish "virtualization.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+RUN adduser --disabled-password user
+
+USER user
+
 ENTRYPOINT ["dotnet", "virtualization.dll"]
