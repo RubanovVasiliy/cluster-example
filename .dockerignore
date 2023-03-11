@@ -6,3 +6,4 @@ virtualization/bin
 virtualization/obj
 virtualization/.gitignore
 .git
+data
