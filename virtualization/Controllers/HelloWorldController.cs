@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace virtualization.Controllers;
 
 [ApiController]
-[Route("")]
+[Route("hello")]
 public class HelloWorldController : ControllerBase
 {
     
