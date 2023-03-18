@@ -16,11 +16,12 @@ builder.Services.AddDbContext<MyDbContext>(item =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+Console.WriteLine(app.Environment.EnvironmentName);
 
 app.UseHttpsRedirection();
 
