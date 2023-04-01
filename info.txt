@@ -1,0 +1,19 @@
+# Create configs
+kubectl apply -f service.yaml 
+kubectl apply -f deployment.yaml  
+kubectl apply -f ingress.yaml
+
+
+kubectl get pods  
+kubectl get services 
+
+kubectl delete deployment whoami-deployment  
+kubectl delete service whoami-service
+
+kubectl port-forward whoami-deployment-7879bc7dbf-8rrrl 5000:80
+kubectl port-forward my-echo-server-75975766b-8frrc 3000:80
+
+
+minikube service whoami-service 
+minikube dashboard
+
